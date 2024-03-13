@@ -10,17 +10,27 @@ const createButton = document.querySelector("button[data-create]");
 const destroyButton = document.querySelector("button[data-destroy]");
 const boxes = document.querySelector("#boxes");
 
-let inputAmount = 0;
-input.addEventListener("input", getValue);
-function getValue(event) {
-  inputAmount = event.currentTarget.value;
-  console.log(inputAmount);
-};
-
 createButton.addEventListener("click", () => {
-
+  input.focus();
+  if (input.value >= 1 && input.value <= 100) {
+    createBoxes(input.value);
+    input.value = "";
+  }
 });
 
-function createBoxes(amount) {
+let newDiv;
 
-};
+function createBoxes(amount) {
+  boxes.innerHTML = "";
+  let boxsize = 30;
+  for (let i = 1; i <= amount; i += 1) {
+    newDiv = `<div style="width: ${boxsize}px; height: ${boxsize}px; background: ${getRandomHexColor()}"></div>`;
+    boxes.insertAdjacentHTML("beforeend", newDiv);
+    boxsize += 10;
+  }
+}
+
+destroyButton.addEventListener("click", () => {
+  input.value = "";
+  boxes.innerHTML = "";
+})
