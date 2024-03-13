@@ -1,3 +1,5 @@
+const gallery = document.querySelector(".gallery");
+
 const images = [
   {
     url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -27,3 +29,21 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
+
+const markup =
+  images
+    .map((image) => `<li><img src=${image.url} alt=${image.alt}></li>`)
+    .join("");
+
+gallery.insertAdjacentHTML("beforeend", markup);
+
+gallery.style.padding = "0";
+gallery.style.display = "flex";
+gallery.style.width = "1128px";
+gallery.style.columnGap = "24px";
+gallery.style.rowGap = "48px";
+gallery.style.justifyContent = "space-between";
+gallery.style.listStyle = "none";
+gallery.style.flexWrap = "wrap";
+
+    
